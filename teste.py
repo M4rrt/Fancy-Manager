@@ -1,2 +1,0 @@
-print('hellow word')
-# comentário
