@@ -5,34 +5,17 @@
  */
 package projetogerenciaestoque;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author bisso
  */
 public class Estoque {
-     private Produto Listaproduto;
-     private int QuantidadeEstoque;
+    // usar arraylist ?
+    private ArrayList<Produto> Produtos;
 
-    public Produto getListaproduto() {
-        return Listaproduto;
-    }
-
-    public void setListaproduto(Produto Listaproduto) {
-        this.Listaproduto = Listaproduto;
-    }
-
-    public int getQuantidadeEstoque() {
-        return QuantidadeEstoque;
-    }
-
-    public void setQuantidadeEstoque(int QuantidadeEstoque) {
-        this.QuantidadeEstoque = QuantidadeEstoque;
-    }
-
-    public Estoque(Produto Listaproduto, int QuantidadeEstoque) {
-        this.Listaproduto = Listaproduto;
-        this.QuantidadeEstoque = QuantidadeEstoque;
-    }
-     
-    
+    public Estoque() {
+        Produtos = new ArrayList();
+    }   
 }

@@ -11,11 +11,11 @@ package projetogerenciaestoque;
  */
 public class Produto {
     private int CodigoProd;
-      private String NomeProduto;
-      private String Descricao;
-      private int QTDEstoque;
-      private  float valorProduto;
-      private int EstoqueSeguraca;
+    private String NomeProduto;
+    private String Descricao;
+    private int QTDEstoque;
+    private  float valorProduto;
+    private int EstoqueSeguraca;
 
     public int getCodigoProd() {
         return CodigoProd;
