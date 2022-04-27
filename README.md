@@ -2,7 +2,7 @@
 ## PROJETO DE PRÁTICA PROFISSIONAL: DESENVOLVIMENTO DE SOFTWARE
 #### Professor: José Matias Lemes Filho
 
-Universidade São Francisco Itatiba
+### Universidade São Francisco Itatiba
 
 ### Integrantes: 
 
