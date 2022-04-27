@@ -1,7 +1,7 @@
 # Fancy-Manager
-# PROJETO DE PRÁTICA PROFISSIONAL: DESENVOLVIMENTO DE SOFTWARE
+## PROJETO DE PRÁTICA PROFISSIONAL: DESENVOLVIMENTO DE SOFTWARE
 #### Professor: José Matias Lemes Filho
-Universidade São Francisco
+Universidade São Francisco Itatiba
 Integrantes: Carlos M. Bissoni, Francisco L. Paixão, Guilherme Martins, Jhonatan N. Machado, João V. S. Martins
 2 
 # Objetivo
