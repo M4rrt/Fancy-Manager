@@ -21,8 +21,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         jLabel1.setVisible(false);
         CarregarTabela();
-        ImageIcon icon = new ImageIcon("src/imagens/refresh.png");
-        icon.setImage(icon.getImage().getScaledInstance(btnBuscar.getWidth()-15, btnBuscar.getHeight()-15,100));
+        ImageIcon icon = new ImageIcon("src/imagens/refresh svg.svg");
+        icon.setImage(icon.getImage().getScaledInstance(btnBuscar.getWidth()-15, btnBuscar.getHeight()-15,1));
         btnBuscar.setIcon(icon);
         tbProduto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
@@ -106,7 +106,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/refresh.png"))); // NOI18N
         btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscar.setFocusable(false);
         btnBuscar.setPreferredSize(new java.awt.Dimension(32, 32));
@@ -172,13 +171,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(comboBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(87, 87, 87)
                         .addComponent(campoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAvisos, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -219,6 +218,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
        ProdutoDao pd = new ProdutoDao();
        String valorBusca = comboBusca.getSelectedItem().toString();
        if(campoBusca.getText().isEmpty()){
+           jLabel1.setText(campoBusca.getText());
            CarregarTabela();
        }
        else if(campoBusca.getText().length()>0 & valorBusca.equals("Código")){

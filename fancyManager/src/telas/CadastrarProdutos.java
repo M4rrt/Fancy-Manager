@@ -4,10 +4,12 @@ import Dao.ProdutoDao;
 import SQL.ConexaoSQL;
 import classes.Produto;
 import com.formdev.flatlaf.FlatDarkLaf;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -277,18 +279,6 @@ public class CadastrarProdutos extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(75,77,79));
     }//GEN-LAST:event_campoNomeFocusLost
 
-    private void campoValorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoValorFocusGained
-        lbValor.setFont(new java.awt.Font("Segoe UI Variable", 1, 12));
-        lbValor.setForeground(new java.awt.Color(57,113,177));
-        jSeparator2.setForeground(new java.awt.Color(57,113,177));
-    }//GEN-LAST:event_campoValorFocusGained
-
-    private void campoValorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoValorFocusLost
-        lbValor.setFont(new java.awt.Font("Segoe UI Variable", 0, 12));
-        lbValor.setForeground(new java.awt.Color(187,187,187));
-        jSeparator2.setForeground(new java.awt.Color(75,77,79));
-    }//GEN-LAST:event_campoValorFocusLost
-
     private void campoQtdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoQtdFocusGained
         lbQtd.setFont(new java.awt.Font("Segoe UI Variable", 1, 12));
         lbQtd.setForeground(new java.awt.Color(57,113,177));
@@ -326,6 +316,8 @@ public class CadastrarProdutos extends javax.swing.JFrame {
     }//GEN-LAST:event_campoDescFocusLost
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        DecimalFormat df = new DecimalFormat("#,##0.00");
+        df.setRoundingMode(RoundingMode.CEILING);
         Produto p = new Produto();
         ProdutoDao pd = new ProdutoDao();
         float valorMax = 10000000.00f;
@@ -402,7 +394,11 @@ public class CadastrarProdutos extends javax.swing.JFrame {
                 p.setNome(campoNome.getText());
                 p.setDescricao(campoDesc.getText());
                 p.setQuantidade(Integer.parseInt(campoQtd.getText()));
-                p.setPrecoProduto(Float.parseFloat(campoValor.getText()));
+//                Double numerozin = Double.parseDouble(campoValor.getText());
+//                df.format(numerozin);
+//                JOptionPane.showMessageDialog(null, "valor formatado:  "+numerozin, "", JOptionPane.ERROR_MESSAGE);
+                p.setPrecoProduto(Double.parseDouble(campoValor.getText()));
+//                p.setPrecoProduto(numerozin);
                 p.setEstoqueSeguranca(Integer.parseInt(campoEstoque.getText()));
                 if(Integer.parseInt(campoQtd.getText()) < Integer.parseInt(campoEstoque.getText())){
                     p.setAlerta("Quantidade abaixo do estoque minímo");
@@ -421,8 +417,7 @@ public class CadastrarProdutos extends javax.swing.JFrame {
             catch (SQLException ex){
                 JOptionPane.showMessageDialog(null, "ERRO:  "+ex, "", JOptionPane.ERROR_MESSAGE);
             }
-        }
-        
+        } 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnLimpar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar1ActionPerformed
@@ -434,14 +429,26 @@ public class CadastrarProdutos extends javax.swing.JFrame {
         campoQtd.setText("");
     }//GEN-LAST:event_btnLimpar1ActionPerformed
 
-    private void campoValorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoValorKeyReleased
-        campoValor.setText(campoValor.getText().replaceAll("[^0-9.]", ""));
-    }//GEN-LAST:event_campoValorKeyReleased
-
     private void campoEstoqueKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoEstoqueKeyReleased
         campoEstoque.setText(campoEstoque.getText().replaceAll("[^0-9]", ""));
         campoQtd.setText(campoQtd.getText().replaceAll("[^0-9]", ""));
     }//GEN-LAST:event_campoEstoqueKeyReleased
+
+    private void campoValorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoValorKeyReleased
+        campoValor.setText(campoValor.getText().replaceAll("[^0-9.]", ""));
+    }//GEN-LAST:event_campoValorKeyReleased
+
+    private void campoValorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoValorFocusLost
+        lbValor.setFont(new java.awt.Font("Segoe UI Variable", 0, 12));
+        lbValor.setForeground(new java.awt.Color(187,187,187));
+        jSeparator2.setForeground(new java.awt.Color(75,77,79));
+    }//GEN-LAST:event_campoValorFocusLost
+
+    private void campoValorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoValorFocusGained
+        lbValor.setFont(new java.awt.Font("Segoe UI Variable", 1, 12));
+        lbValor.setForeground(new java.awt.Color(57,113,177));
+        jSeparator2.setForeground(new java.awt.Color(57,113,177));
+    }//GEN-LAST:event_campoValorFocusGained
 
     /**
      * @param args the command line arguments

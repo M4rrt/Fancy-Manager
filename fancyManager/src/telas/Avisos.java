@@ -58,7 +58,7 @@ public class Avisos extends javax.swing.JFrame {
             tbAvisos.getColumnModel().getColumn(0).setPreferredWidth(0);
             tbAvisos.getColumnModel().getColumn(1).setPreferredWidth(30);
             tbAvisos.getColumnModel().getColumn(2).setPreferredWidth(40);
-            tbAvisos.getColumnModel().getColumn(3).setPreferredWidth(35);
+            tbAvisos.getColumnModel().getColumn(3).setPreferredWidth(50);
             tbAvisos.getColumnModel().getColumn(4).setPreferredWidth(200);
         }
 
@@ -67,12 +67,12 @@ public class Avisos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
         );
 
         pack();

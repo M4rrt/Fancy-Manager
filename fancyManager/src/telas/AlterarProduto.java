@@ -5,8 +5,13 @@ import classes.Produto;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.text.MaskFormatter;
 
 public class AlterarProduto extends javax.swing.JFrame {
     private TelaPrincipal tp;
@@ -14,11 +19,20 @@ public class AlterarProduto extends javax.swing.JFrame {
         this.tp =  tp;
         setVisible(true);
     }
+//    public void FormatarCampo(){
+//        try {
+//            MaskFormatter mask = new MaskFormatter("#######.##");
+//            mask.install((JFormattedTextField) jFormattedTextField1);
+//        } catch (ParseException ex) {
+//                Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
     public AlterarProduto() {
         initComponents();
         jLabel1.setVisible(false);
         jLabel2.setVisible(false);
         jLabel3.setVisible(false);
+//        FormatarCampo();
     }
     public void setNomeRegistro(String valorNome) {
         jLabel1.setText(valorNome);
@@ -208,14 +222,6 @@ public class AlterarProduto extends javax.swing.JFrame {
         campoCod.setBorder(null);
         campoCod.setEnabled(false);
         campoCod.setPreferredSize(new java.awt.Dimension(258, 30));
-        campoCod.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                campoCodFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                campoCodFocusLost(evt);
-            }
-        });
 
         jLabel1.setEnabled(false);
 
@@ -346,7 +352,7 @@ public class AlterarProduto extends javax.swing.JFrame {
         Produto p = new Produto();
         ProdutoDao pd = new ProdutoDao();
         float valorMax = 10000000.00f;
-        int qtd = 0,maxInt = 2147483647, erro=0;
+        int qtd = 0,maxInt = 2147483647;
         char temp;
         
         for (int i = 0; i < campoValor.getText().length(); i++) {
@@ -465,18 +471,6 @@ public class AlterarProduto extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(75,77,79));
     }//GEN-LAST:event_campoNomeFocusLost
 
-    private void campoValorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoValorFocusGained
-        lbValor.setFont(new java.awt.Font("Segoe UI Variable", 1, 12));
-        lbValor.setForeground(new java.awt.Color(57,113,177));
-        jSeparator2.setForeground(new java.awt.Color(57,113,177));
-    }//GEN-LAST:event_campoValorFocusGained
-
-    private void campoValorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoValorFocusLost
-        lbValor.setFont(new java.awt.Font("Segoe UI Variable", 0, 12));
-        lbValor.setForeground(new java.awt.Color(187,187,187));
-        jSeparator2.setForeground(new java.awt.Color(75,77,79));
-    }//GEN-LAST:event_campoValorFocusLost
-
     private void campoQtdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoQtdFocusGained
         lbQtd.setFont(new java.awt.Font("Segoe UI Variable", 1, 12));
         lbQtd.setForeground(new java.awt.Color(57,113,177));
@@ -517,7 +511,6 @@ public class AlterarProduto extends javax.swing.JFrame {
         campoNome.setText("");
         campoDesc.setText("");
         campoEstoque.setText("");
-        campoCod.setText("");
         campoValor.setText("");
         campoQtd.setText("");
     }//GEN-LAST:event_btnLimparActionPerformed
@@ -534,15 +527,18 @@ public class AlterarProduto extends javax.swing.JFrame {
         campoValor.setText(campoValor.getText().replaceAll("[^0-9.]", ""));
     }//GEN-LAST:event_campoValorKeyReleased
 
-    private void campoCodFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCodFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoCodFocusGained
+    private void campoValorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoValorFocusLost
+        lbValor.setFont(new java.awt.Font("Segoe UI Variable", 0, 12));
+        lbValor.setForeground(new java.awt.Color(187,187,187));
+        jSeparator2.setForeground(new java.awt.Color(75,77,79));
+    }//GEN-LAST:event_campoValorFocusLost
 
-    private void campoCodFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCodFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoCodFocusLost
-
-    public static void main(String args[]) {
+    private void campoValorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoValorFocusGained
+        lbValor.setFont(new java.awt.Font("Segoe UI Variable", 1, 12));
+        lbValor.setForeground(new java.awt.Color(57,113,177));
+        jSeparator2.setForeground(new java.awt.Color(57,113,177));
+    }//GEN-LAST:event_campoValorFocusGained
+     public static void main(String args[]) {
         try{
             UIManager.setLookAndFeel(new FlatDarkLaf());
         }catch(Exception e){
