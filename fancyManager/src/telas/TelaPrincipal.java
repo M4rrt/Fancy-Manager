@@ -1,16 +1,10 @@
 package telas;
 
 import Dao.ProdutoDao;
-import SQL.ConexaoSQL;
 import classes.Produto;
 import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatLightLaf;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
@@ -21,9 +15,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         jLabel1.setVisible(false);
         CarregarTabela();
-        ImageIcon icon = new ImageIcon("src/imagens/refresh svg.svg");
-        icon.setImage(icon.getImage().getScaledInstance(btnBuscar.getWidth()-15, btnBuscar.getHeight()-15,1));
-        btnBuscar.setIcon(icon);
+        btnBuscar.setSVGImage("imagens/refresh-svgrepo-com (1).svg", 35, 35);
         tbProduto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 
@@ -36,12 +28,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         comboBusca = new javax.swing.JComboBox<>();
         campoBusca = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         btnAvisos = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnIncluir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnBuscar = new imagens.SVGImage();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Jp Modas");
@@ -58,7 +50,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -106,15 +98,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBuscar.setFocusable(false);
-        btnBuscar.setPreferredSize(new java.awt.Dimension(32, 32));
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-
         btnRemover.setText("Remover");
         btnRemover.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRemover.setFocusable(false);
@@ -154,6 +137,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1.setEnabled(false);
         jLabel1.setFocusable(false);
 
+        btnBuscar.setFocusable(false);
+        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseExited(evt);
+            }
+        });
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -163,20 +161,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(btnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addGap(18, 18, 18)
                         .addComponent(comboBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(87, 87, 87)
                         .addComponent(campoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAvisos, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -187,67 +185,31 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAvisos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(comboBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(btnAvisos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(campoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(67, 67, 67)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE))
+                            .addComponent(btnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(65, 65, 65)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
-       ProdutoDao pd = new ProdutoDao();
-       String valorBusca = comboBusca.getSelectedItem().toString();
-       if(campoBusca.getText().isEmpty()){
-           jLabel1.setText(campoBusca.getText());
-           CarregarTabela();
-       }
-       else if(campoBusca.getText().length()>0 & valorBusca.equals("Código")){
-            prud.setCodigoProduto(Integer.parseInt(campoBusca.getText()));
-            pd.VerificarRegistro(prud);
-            
-            if(pd.VerificarRegistro(prud) == true){
-                prud.setCodigoProduto(Integer.parseInt(campoBusca.getText()));
-                pd.BuscaCodigo(prud);
-                CarregarCodigo();
-                jLabel1.setText(campoBusca.getText());
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "O código " + "'"+prud.getCodigoProduto()+"'"+ " não existe\n", "", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-       else if(valorBusca.equals("Nome")){
-           prud.setNome("'%"+campoBusca.getText()+"%';");
-           pd.ListarBuscarNome(prud.getNome());
-           CarregarBuscaNome();
-           jLabel1.setText(campoBusca.getText());
-       }
-       else if(valorBusca.equals("Descrição")){
-           prud.setDescricao("'%"+campoBusca.getText()+"%';");
-           pd.ListarBuscarDesc(prud.getDescricao());
-           CarregarBuscaDesc();
-           jLabel1.setText(campoBusca.getText());
-       }
-    }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void comboBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBuscaActionPerformed
 
@@ -355,6 +317,51 @@ public class TelaPrincipal extends javax.swing.JFrame {
             campoBusca.setText(campoBusca.getText().replaceAll("[^0-9]", ""));
         }
     }//GEN-LAST:event_campoBuscaKeyReleased
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+       ProdutoDao pd = new ProdutoDao();
+       String valorBusca = comboBusca.getSelectedItem().toString();
+       if(campoBusca.getText().isEmpty()){
+           jLabel1.setText(campoBusca.getText());
+           CarregarTabela();
+       }
+       else if(campoBusca.getText().length()>0 & valorBusca.equals("Código")){
+            prud.setCodigoProduto(Integer.parseInt(campoBusca.getText()));
+            pd.VerificarRegistro(prud);
+            
+            if(pd.VerificarRegistro(prud) == true){
+                prud.setCodigoProduto(Integer.parseInt(campoBusca.getText()));
+                pd.BuscaCodigo(prud);
+                CarregarCodigo();
+                jLabel1.setText(campoBusca.getText());
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "O código " + "'"+prud.getCodigoProduto()+"'"+ " não existe\n", "", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+       else if(valorBusca.equals("Nome")){
+           prud.setNome("'%"+campoBusca.getText()+"%';");
+           pd.ListarBuscarNome(prud.getNome());
+           CarregarBuscaNome();
+           jLabel1.setText(campoBusca.getText());
+       }
+       else if(valorBusca.equals("Descrição")){
+           prud.setDescricao("'%"+campoBusca.getText()+"%';");
+           pd.ListarBuscarDesc(prud.getDescricao());
+           CarregarBuscaDesc();
+           jLabel1.setText(campoBusca.getText());
+       }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseEntered
+        btnBuscar.setSVGImage("imagens/refresh-svgrepo-com (2).svg", 35, 35);
+        btnBuscar.setBackground(new java.awt.Color(60,63,65));
+        btnBuscar.setForeground(new java.awt.Color(60,63,65));
+    }//GEN-LAST:event_btnBuscarMouseEntered
+
+    private void btnBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseExited
+        btnBuscar.setSVGImage("imagens/refresh-svgrepo-com (1).svg", 35, 35);
+    }//GEN-LAST:event_btnBuscarMouseExited
 
     public static void main(String args[]) {
         try{
@@ -480,7 +487,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnAvisos;
-    private javax.swing.JButton btnBuscar;
+    private imagens.SVGImage btnBuscar;
     private javax.swing.JButton btnIncluir;
     private javax.swing.JButton btnRemover;
     private javax.swing.JTextField campoBusca;

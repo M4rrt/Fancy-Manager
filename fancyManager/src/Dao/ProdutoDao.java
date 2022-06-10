@@ -91,7 +91,7 @@ public class ProdutoDao {
             while(rs.next()){
                 Produto p = new Produto();
                 p.setCodigoProduto(rs.getInt(1));
-                p.setPrecoProduto(rs.getFloat(2));
+                p.setPrecoProduto(Double.parseDouble(rs.getString(2)));
                 p.setQuantidade(rs.getInt(3));
                 p.setNome(rs.getString(4));
                 p.setDescricao(rs.getString(5));
@@ -132,14 +132,14 @@ public class ProdutoDao {
         Connection con = ConexaoSQL.getConnection();
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM produto WHERE nome_produto ILIKE "+valor;
+        String sql = "SELECT codigo_produto, trunc(preco_produto,2), quantidade, nome_produto, descricao_produto, estoqueseguranca, alerta FROM produto WHERE nome_produto ILIKE "+valor;
         try {
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
             while(rs.next()){
                 Produto p = new Produto();
                 p.setCodigoProduto(rs.getInt(1));
-                p.setPrecoProduto(rs.getFloat(2));
+                p.setPrecoProduto(Double.parseDouble(rs.getString(2)));
                 p.setQuantidade(rs.getInt(3));
                 p.setNome(rs.getString(4));
                 p.setDescricao(rs.getString(5));
@@ -164,7 +164,7 @@ public class ProdutoDao {
             while(rs.next()){
                 Produto p = new Produto();
                 p.setCodigoProduto(rs.getInt(1));
-                p.setPrecoProduto(rs.getFloat(2));
+                p.setPrecoProduto(Double.parseDouble(rs.getString(2)));
                 p.setQuantidade(rs.getInt(3));
                 p.setNome(rs.getString(4));
                 p.setDescricao(rs.getString(5));
@@ -189,7 +189,7 @@ public class ProdutoDao {
             rs = pstm.executeQuery();
             while(rs.next()){
                 p.setCodigoProduto(rs.getInt(1));
-                p.setPrecoProduto(rs.getFloat(2));
+                p.setPrecoProduto(Double.parseDouble(rs.getString(2)));
                 p.setQuantidade(rs.getInt(3));
                 p.setNome(rs.getString(4));
                 p.setDescricao(rs.getString(5));

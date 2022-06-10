@@ -1,5 +1,6 @@
 package classes;
 
+
 public class Produto {
     private int codigoProduto;
     private double precoProduto;

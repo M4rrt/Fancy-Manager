@@ -3,15 +3,12 @@ package telas;
 import Dao.ProdutoDao;
 import classes.Produto;
 import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatLightLaf;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import javax.swing.text.MaskFormatter;
 
 public class AlterarProduto extends javax.swing.JFrame {
     private TelaPrincipal tp;
@@ -19,20 +16,11 @@ public class AlterarProduto extends javax.swing.JFrame {
         this.tp =  tp;
         setVisible(true);
     }
-//    public void FormatarCampo(){
-//        try {
-//            MaskFormatter mask = new MaskFormatter("#######.##");
-//            mask.install((JFormattedTextField) jFormattedTextField1);
-//        } catch (ParseException ex) {
-//                Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
     public AlterarProduto() {
         initComponents();
         jLabel1.setVisible(false);
         jLabel2.setVisible(false);
         jLabel3.setVisible(false);
-//        FormatarCampo();
     }
     public void setNomeRegistro(String valorNome) {
         jLabel1.setText(valorNome);
@@ -354,6 +342,7 @@ public class AlterarProduto extends javax.swing.JFrame {
         float valorMax = 10000000.00f;
         int qtd = 0,maxInt = 2147483647;
         char temp;
+        DecimalFormat df = new DecimalFormat("#.00");
         
         for (int i = 0; i < campoValor.getText().length(); i++) {
             temp = campoValor.getText().charAt(i);
@@ -423,7 +412,11 @@ public class AlterarProduto extends javax.swing.JFrame {
                     p.setNome(campoNome.getText());
                     p.setDescricao(campoDesc.getText());
                     p.setQuantidade(Integer.parseInt(campoQtd.getText()));
-                    p.setPrecoProduto(Float.parseFloat(campoValor.getText()));
+                    
+                    double dx = Double.parseDouble(campoValor.getText());
+                    String ds = df.format(dx);
+                    p.setPrecoProduto(Float.parseFloat(ds.replace(",",".")));
+                    
                     p.setEstoqueSeguranca(Integer.parseInt(campoEstoque.getText()));
                     if(Integer.parseInt(campoQtd.getText()) < Integer.parseInt(campoEstoque.getText())){
                         p.setAlerta("Quantidade Abaixo do estoque minímo");
@@ -551,7 +544,8 @@ public class AlterarProduto extends javax.swing.JFrame {
             }
         });
     }
-     
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
