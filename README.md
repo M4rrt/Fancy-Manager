@@ -3,7 +3,7 @@
 
 ## O que é nosso projeto ?
 
-	O projeto tem como objetivo auxiliar a empresa [JPaixão Modas] (https://instagram.com/jpaixaomodas?igshid=YmMyMTA2M2Y=) no controle de estoque que é feito atualmente por meio de cadernos, o que além de ineficiente é altamente vulnerável a perdas e danos  por influências externas.
+	O projeto tem como objetivo auxiliar a empresa [JPaixão Modas](https://instagram.com/jpaixaomodas?igshid=YmMyMTA2M2Y=) no controle de estoque que é feito atualmente por meio de cadernos, o que além de ineficiente é altamente vulnerável a perdas e danos  por influências externas.
 	Nosso projeto e feito em java  como o [SGBD postgreSQL](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) Podendo  instalar  através do link acima. e também pelo [Netbeans](https://netbeans.apache.org/download/nb13/nb13.html), [JDK recomendado e o 18 ](https://www.oracle.com/java/technologies/downloads/#jdk18-windows) 
    
 ## Requisitos: 
