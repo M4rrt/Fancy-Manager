@@ -3,8 +3,8 @@
 
 ## O que é nosso projeto ?
 
-	O projeto tem como objetivo auxiliar a empresa [JPaixão Modas] (https://instagram.com/jpaixaomodas?igshid=YmMyMTA2M2Y=) no controle de estoque que é feito atualmente por meio de cadernos, o que além de ineficiente é altamente vulnerável a perdas e danos  por influências externas.
-	Nosso projeto e feito em java  como o [SGBD postgreSQL](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) Podendo  instalar  através do link acima. e também pelo [Netbeans](https://netbeans.apache.org/download/nb13/nb13.html), [JDK recomendado e o 18 ](https://www.oracle.com/java/technologies/downloads/#jdk18-windows) 
+	O projeto tem como objetivo auxiliar a empresa JPaixão Modas no controle de estoque que é feito atualmente por meio de cadernos, o que além de ineficiente é altamente vulnerável a perdas e danos  por influências externas.
+	Nosso projeto e feito em java  como o SGBD postgreSQL Podendo  instalar  através do link acima. e também pelo Netbeans, JDK recomendado e o 18
    
 ## Requisitos: 
 
@@ -15,7 +15,7 @@
 
 ## Instalação: 
 
-	Para utilizar o sistema, basta baixar o o banco de dados "bancoProjeto.sql" e o arquivo jar "fancyManager.jar" [Github](https://github.com/M4rrt/Fancy-Manager.git)
+	Para utilizar o sistema, basta baixar o o banco de dados "bancoProjeto.sql" e o arquivo jar "fancyManager.jar" Github
 
 ## Executando o programa:
 
